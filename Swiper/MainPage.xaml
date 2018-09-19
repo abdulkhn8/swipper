@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Swiper"
+    xmlns:scv="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView"
+    x:Class="Swiper.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="20,30">
+        <scv:SwipeCardView
+            x:Name="SwipeCardView"
+            ItemsSource="{Binding MyList}"
+            SwipedLeftCommand="{Binding SwipedLeftCommand}"
+            SwipedRightCommand="{Binding SwipedRightCommand}"
+            TopItem="{Binding TopMyModel}"
+            WidthRequest="400"
+            HeightRequest="360"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <scv:SwipeCardView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        OutlineColor="Black"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="true"
+                        IsClippedToBounds="true">
+                        <StackLayout
+                            Padding="0"
+                            Spacing="0">
+                            <Image
+                                Source="{Binding ImageUrl}" 
+                                WidthRequest="400" 
+                                HeightRequest="300"
+                                Aspect="AspectFill" />
+                            <StackLayout
+                                HeightRequest="60"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="Silver">
+                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Margin="13"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </scv:SwipeCardView.ItemTemplate>
+        </scv:SwipeCardView>
+    </StackLayout>
+</ContentPage>
